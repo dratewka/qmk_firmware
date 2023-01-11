@@ -4,15 +4,17 @@
 
 #define MASTER_LEFT
 
-//#define TAPPING_FORCE_HOLD
-#define TAPPING_TERM 160
-#define DYNAMIC_TAPPING_TERM_INCREMENT 20
+#define TAPPING_TERM 180
+#define TAPPING_TERM_PER_KEY
+
+// Enable rapid switch from tap to hold, disables double tap hold auto-repeat.
+#define TAPPING_FORCE_HOLD
 
 // Prevent normal rollover on alphas from accidentally triggering mods.
 #define IGNORE_MOD_TAP_INTERRUPT
 
-// Enable rapid switch from tap to hold, disables double tap hold auto-repeat.
-#define TAPPING_FORCE_HOLD
+
+
 
 // Mouse key speed and acceleration.
 #undef MOUSEKEY_DELAY

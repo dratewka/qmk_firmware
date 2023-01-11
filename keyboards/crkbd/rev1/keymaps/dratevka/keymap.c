@@ -42,3 +42,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                   KC_NO,         KC_NO,          KC_NO,          /**/ KC_NO,  KC_NO,         KC_NO
   ),
 };
+
+uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case LCTL_T(KC_D):
+        case RCTL_T(KC_K):
+        case LGUI_T(KC_A):
+        case RGUI_T(KC_SCLN):
+            return TAPPING_TERM + 60;
+        default:
+            return TAPPING_TERM;
+    }
+}
