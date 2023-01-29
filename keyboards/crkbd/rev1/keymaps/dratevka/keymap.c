@@ -57,3 +57,39 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
             return TAPPING_TERM;
     }
 }
+
+enum combo_events {
+  BSCP,
+  ENT,
+  ESC,
+  TAB,
+  SHRUG,
+  COMBO_LENGTH
+};
+
+uint16_t COMBO_LEN = COMBO_LENGTH;
+
+const uint16_t PROGMEM bspc_combo[] = {KC_O, KC_P, COMBO_END};
+const uint16_t PROGMEM ent_combo[] = {RALT_T(KC_L), RGUI_T(KC_SCLN), COMBO_END};
+const uint16_t PROGMEM esc_combo[] = {KC_Q, KC_W, COMBO_END};
+const uint16_t PROGMEM tab_combo[] = {LGUI_T(KC_A), LALT_T(KC_S), COMBO_END};
+
+const uint16_t PROGMEM shrg_combo[] = {LALT_T(KC_S), KC_G, COMBO_END};
+
+combo_t key_combos[] = {
+    [BSCP] = COMBO(bspc_combo, KC_BSPC),
+    [ENT] = COMBO(ent_combo, KC_ENT),
+    [ESC] = COMBO(esc_combo, KC_ESC),
+    [TAB] = COMBO(tab_combo, KC_TAB),
+    [SHRUG] = COMBO_ACTION(shrg_combo),
+};
+
+void process_combo_event(uint16_t combo_index, bool pressed) {
+  switch(combo_index) {
+    case SHRUG:
+      if (pressed) {
+        send_unicode_string("¯\\_(ツ)_/¯");
+      }
+      break;
+  }
+}
